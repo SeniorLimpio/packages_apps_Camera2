@@ -2134,6 +2134,12 @@ public class PhotoModule
             mRestartPreview = false;
         }
 
+        // Preview needs to be stopped when changing resolution
+        if (mRestartPreview && mCameraState != PREVIEW_STOPPED) {
+            stopPreview();
+            mRestartPreview = false;
+        }
+
         setDisplayOrientation();
 
         if (!mSnapshotOnIdle) {
